@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111e2a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%23556570'/%3E%3Cpath d='M8 9q4-2 8 1q4-3 8-1v15q-4-2-8 0q-4-2-8 0z' fill='none' stroke='%23d4e4df' stroke-width='2'/%3E%3C/svg%3E">
+  <title>灰泽满 · 雨雾节拍</title>
+  <!-- INLINE_STYLE -->
+</head>
+<body>
+  <main id="stage" tabindex="0" aria-label="点击任意位置或按空格，随机语音将在下一半拍播放">
+    <canvas id="scene" aria-hidden="true"></canvas>
+    <header class="identity"><p class="eyebrow">HAZEL · RAIN RHYTHM</p><h1>雨雾节拍</h1><p class="byline">听雨，也听见节奏。</p></header>
+    <div class="rhythm-status" aria-label="音乐节拍"><span id="tempo-readout"></span><div class="beat-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div>
+    <section id="welcome" class="welcome" aria-live="polite">
+      <p id="welcome-title">轻点一下，让雨和音乐一起动起来。</p><p id="welcome-message">任意位置，同一个节奏。</p>
+      <button id="start-button" data-ui type="button">开始 <span aria-hidden="true">↗</span></button>
+    </section>
+    <div class="caption" aria-live="polite"><span id="voice-caption">雨声很轻，节奏刚刚好。</span><small id="play-hint">全屏点击 · 半拍回应</small></div>
+  </main>
+  <nav class="toolbar" aria-label="游戏控制" data-ui>
+    <button id="pause-button" type="button" aria-label="暂停音乐和语音" title="暂停" disabled><span id="pause-symbol" aria-hidden="true">Ⅱ</span></button>
+    <span class="toolbar-label" aria-hidden="true">半拍回应</span>
+    <button id="settings-button" type="button" aria-label="打开设置" title="设置"><span aria-hidden="true">☷</span></button>
+  </nav>
+  <dialog id="settings-dialog" aria-labelledby="settings-title" data-ui>
+    <div class="dialog-heading"><div><p class="eyebrow">RAIN & RHYTHM</p><h2 id="settings-title">雨中的声音</h2></div><button id="close-settings" type="button" aria-label="关闭设置">×</button></div>
+    <div class="field"><span>语音片段</span><span id="voice-count">随机播放已选语音</span></div>
+    <label class="field">音乐<span><input id="music-volume" type="range" min="0" max="1" step="0.01"><output id="music-value"></output></span></label>
+    <label class="field">小满的声音<span><input id="voice-volume" type="range" min="0" max="1" step="0.01"><output id="voice-value"></output></span></label>
+    <label class="field">总音量<span><input id="master-volume" type="range" min="0" max="1" step="0.01"><output id="master-value"></output></span></label>
+    <label class="motion-option"><input id="reduce-motion" type="checkbox">减少动效</label>
+    <details class="calibration"><summary>节拍校准</summary><p>语音每半拍回应一次。拍点已按这份音乐校准，可以按听感微调；换音乐后会更新拍点并保留音量。</p><label class="field">速度（BPM）<input id="bpm-input" type="number" min="40" max="180" step="0.001"></label><label class="field">拍点位置（秒）<input id="offset-input" type="number" min="0" max="5" step="0.00001"></label><label class="field">起始拍位<select id="bar-phase"><option value="0">第 1 拍</option><option value="1">第 2 拍</option><option value="2">第 3 拍</option><option value="3">第 4 拍</option></select></label><p>调整四拍循环的强拍位置。</p></details>
+    <div class="backup"><button id="export-settings" type="button">导出设置</button><button id="import-settings" type="button">导入设置</button><input id="settings-file" type="file" accept="application/json,.json" hidden></div>
+    <p id="storage-status" class="storage-status" role="status"></p>
+    <p class="dialog-note">点哪里，光就在哪里绽开。声音保持原声。</p>
+  </dialog>
+  <div id="toast" role="status"></div>
+  <!-- INLINE_RESOURCES -->
+  <!-- INLINE_SCRIPT -->
+</body>
+</html>

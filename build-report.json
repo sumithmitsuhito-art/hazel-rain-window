@@ -1,0 +1,152 @@
+{
+  "version": "0.5.1",
+  "date": "2026-10-07",
+  "bytes": 7087114,
+  "gzipBytes": 5085167,
+  "sha256": "7a16bc7797dcaa511f465b6355e53646f0a22e397ef841835f4af0974c1bfc52",
+  "runtimeResourceBytes": 5259814,
+  "resourceCount": 27,
+  "uniqueResources": 27,
+  "codeBytes": 34300,
+  "cssBytes": 6239,
+  "esbuild": "0.28.2",
+  "node": "v24.15.0",
+  "externalRuntimeResources": false,
+  "assets": [
+    {
+      "file": "hazel-uniform-idle.webp",
+      "bytes": 118016,
+      "sha256": "b073c22b2902349a001ed9648d24e3eef99ea17f9e9ae862b7014beef4041edf"
+    },
+    {
+      "file": "music.m4a",
+      "bytes": 2712720,
+      "sha256": "6093903f41f8f292e0980210efcff8cc5cbfc81f41e8c4babf1cad4750e2b9b8"
+    },
+    {
+      "file": "v01.flac",
+      "bytes": 105074,
+      "sha256": "fee5749e535f8e440445bebc9258ab15f98b50aa58d8401cf8b224b14afcd24e"
+    },
+    {
+      "file": "v02.flac",
+      "bytes": 125902,
+      "sha256": "df62e0255f0aa56deaad4471b9e6d4acace9faac7c4e8550daf75218f5cf790c"
+    },
+    {
+      "file": "v03.flac",
+      "bytes": 98808,
+      "sha256": "6066518126ad0fad98ba796dd1ea996db468d3faad3bea95a962259f2b52cb84"
+    },
+    {
+      "file": "v04.flac",
+      "bytes": 87896,
+      "sha256": "cd859132ea40e718c05edab4f6bafb3a8cf0a9b214a12fae854f5bf33917c7ce"
+    },
+    {
+      "file": "v05.flac",
+      "bytes": 129497,
+      "sha256": "c79b8603c3ae5d9a61648a1dd7ee71a3b4830363babae4712b65586825e96bce"
+    },
+    {
+      "file": "v06.flac",
+      "bytes": 47930,
+      "sha256": "b38fd89f5eda5d6b46d7c3dd745ca2044c12f4ca540442cef4e87c0a03931f47"
+    },
+    {
+      "file": "v07.flac",
+      "bytes": 70153,
+      "sha256": "0078388ba698e9936d02f5b50ba44350f541945f2882f1adfc9e4462e8eaed44"
+    },
+    {
+      "file": "v08.flac",
+      "bytes": 103176,
+      "sha256": "feeae6f133c5c07fda2f5a5f0075aaa93000a43c13786f0a8bae1753320c3e5f"
+    },
+    {
+      "file": "v09.flac",
+      "bytes": 109503,
+      "sha256": "5223890b47c40bacd76719a2dd441c43fc79ffa2ad67087b7525bc92aee5072f"
+    },
+    {
+      "file": "v10.flac",
+      "bytes": 100539,
+      "sha256": "f8ebbde59c26a4d6e85f69b4a13aeef4a454c5acfa9bd5b08976470ffe33c91d"
+    },
+    {
+      "file": "v11.flac",
+      "bytes": 115726,
+      "sha256": "86e3c4f3a8aad71a65eb6d89d8745afe5eeab27b5b031fa5bef8a64d4a05e95c"
+    },
+    {
+      "file": "v12.flac",
+      "bytes": 54517,
+      "sha256": "aec5b54c881faf339894b51cf30080958439f0beaf351189affbea17b8623bf3"
+    },
+    {
+      "file": "v13.flac",
+      "bytes": 100695,
+      "sha256": "369766130c4f2323943de90381660b4bcfdd95aae6efba15b15a0fe98b3b7a4b"
+    },
+    {
+      "file": "v14.flac",
+      "bytes": 128681,
+      "sha256": "a0906a99b5dc6b9716860ed3e48eba845465dd3787e6103190fe093f9a7811a0"
+    },
+    {
+      "file": "v15.flac",
+      "bytes": 109147,
+      "sha256": "e70dd9fe1b6c49bd3d778fd5afcb362c63e3dd1b5d58c4a9fb64b07ef3adcb9a"
+    },
+    {
+      "file": "v16.flac",
+      "bytes": 57897,
+      "sha256": "3da01e0952aa1bebd27a0a5ee3617f600508e1b1a187e4c29ef36df44050cb4b"
+    },
+    {
+      "file": "v17.flac",
+      "bytes": 55040,
+      "sha256": "b38a329cdb58280865072e5a5966c88268487ab0256361fac70ad7f061f92364"
+    },
+    {
+      "file": "v18.flac",
+      "bytes": 97781,
+      "sha256": "c64ac4de445d479b87b1d0957edd7fef5c4cf91e23ae8f147a1a2e45584efc8f"
+    },
+    {
+      "file": "v19.flac",
+      "bytes": 99382,
+      "sha256": "b3145283bfff8bfef674676bbb66f77634511b99ab194b52f24139761d4ad195"
+    },
+    {
+      "file": "v20.flac",
+      "bytes": 102488,
+      "sha256": "032374d81e9e0f48ebe4d1d31f2df2e611e1f0548cb5be7a23cd43ac74b6a898"
+    },
+    {
+      "file": "v21.flac",
+      "bytes": 101967,
+      "sha256": "bc5157a7acdf926e1a8b13db8d75f062eb865e6b38fd180b57b9a6430a50905b"
+    },
+    {
+      "file": "v22.flac",
+      "bytes": 89137,
+      "sha256": "a0c2609565f6b9bb6c08cbdf9fb2daa4eaf019098424dc4a33400032beb61966"
+    },
+    {
+      "file": "v23.flac",
+      "bytes": 113632,
+      "sha256": "1d403a49641cf82bd6c26ba62911772f2273d1f4bd2dc0dff8c59e7f041a5875"
+    },
+    {
+      "file": "v24.flac",
+      "bytes": 115090,
+      "sha256": "28c0b91f1a6baadac77d9fb9bb812b5acb2b99c39bef158a758bc87ab9ec8719"
+    },
+    {
+      "file": "v25.flac",
+      "bytes": 109420,
+      "sha256": "45c0c67b261db2b636af1157eee7e2409d0b3d611ad3ed21b24454de58d99d66"
+    }
+  ]
+}

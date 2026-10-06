@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-07",
+  "version": "0.5.1",
+  "lockedDependencyRestore": true,
+  "coreTestsPassed": 14,
+  "buildPassed": true,
+  "browserTestsPassed": true,
+  "documentationLinksVerified": true,
+  "independentBuildInputsVerified": true,
+  "productionFileCount": 27,
+  "sourceVoiceCount": 25,
+  "htmlBytes": 7087114,
+  "htmlSha256": "7a16bc7797dcaa511f465b6355e53646f0a22e397ef841835f4af0974c1bfc52"
+}

@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-07",
+  "version": "0.5.1",
+  "sameRuntimeJavaScript": true,
+  "sameRuntimeCss": true,
+  "same27RuntimeResourceHashes": true,
+  "originalSourceHashesVerified": true,
+  "independentSourcePaths": true,
+  "oldHtmlSha256": "f7dffe08b0e023f99d1628a6d14a61540e999d70c073453565d584bb15db3c61",
+  "newHtmlSha256": "7a16bc7797dcaa511f465b6355e53646f0a22e397ef841835f4af0974c1bfc52",
+  "htmlChange": "Only embedded catalog source paths were relocated; runtime code, styles and media unchanged."
+}
