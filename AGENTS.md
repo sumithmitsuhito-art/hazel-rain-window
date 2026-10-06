@@ -4,7 +4,7 @@
 
 ## 先读
 
-阅读 README.md、docs/DESIGN.md、docs/ASSETS.md 和 docs/VALIDATION.md。当前版本 0.5.1；动态判定线版本已回退，不得把 0.6.0 描述成当前实现。
+阅读 README.md、docs/DESIGN.md、docs/ASSETS.md 和 docs/VALIDATION.md。当前版本 0.5.2；动态判定线版本已回退，不得把 0.6.0 描述成当前实现。
 
 ## 必须保持的行为
 

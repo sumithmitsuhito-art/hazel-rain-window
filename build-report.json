@@ -1,9 +1,9 @@
 {
-  "version": "0.5.1",
+  "version": "0.5.2",
   "date": "2026-10-07",
-  "bytes": 7087114,
-  "gzipBytes": 5085167,
-  "sha256": "7a16bc7797dcaa511f465b6355e53646f0a22e397ef841835f4af0974c1bfc52",
+  "bytes": 7087291,
+  "gzipBytes": 5085256,
+  "sha256": "0495e3a474e239cd4170a97df7fb92ff6e6597155de6dcee6e21ecb4f2613a61",
   "runtimeResourceBytes": 5259814,
   "resourceCount": 27,
   "uniqueResources": 27,

@@ -19,6 +19,6 @@
 
 素材重新生成后，27 项运行资源的 SHA-256 与整理前完全一致；内联 JavaScript 与 CSS 也一致。HTML 哈希变化只来自内嵌目录的原件路径调整。详见 evidence/organization-integrity.json。
 
-当前 dist/game.html 为 7,087,114 字节。原件、处理副本和单 HTML 各有职责，不作为无用重复文件删除。node_modules 是本机开发依赖，已忽略；需要时可通过 npm ci 重建。
+整理时 dist/game.html 为 7,087,114 字节；0.5.2 构建后为 7,087,291 字节，以 build-report.json 为准。原件、处理副本和单 HTML 各有职责，不作为无用重复文件删除。node_modules 是本机开发依赖，已忽略；需要时可通过 npm ci 重建。
 
-未初始化、提交、推送或发布 GitHub 仓库。
+整理时未初始化、提交、推送或发布 GitHub 仓库。此后已在 2026-10-07 本地 git init 并提交 0.5.1 作为基线（分支 main，无远程仓库），未推送、未发布、未添加许可证。

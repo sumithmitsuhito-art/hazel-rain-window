@@ -9,7 +9,7 @@
 | 坐姿人物 | assets/art/hazel-seated-atlas-v1.png | assets/production/hazel-uniform-idle.webp |
 | 背景和特效 | src 中的程序绘制 | 不使用背景位图 |
 
-音乐和语音由用户提供，人物按用户参考与草图生成。运行时仅使用制服坐姿一张图；保留源图用于重新提取，不代表恢复动作或服装切换。生成记录见 assets/art/generation-prompts.json。
+音乐和语音由用户提供，人物按用户参考与草图生成。运行时仅使用制服坐姿一张图；保留源图用于重新提取，不代表恢复动作或服装切换。生成记录见 assets/art/generation-prompts.json。人物源图的哈希与字节数记在 catalog.json 的 characters.source、characters.sourceSha256 与 characters.sourceBytes；源图仍保留全部 8 个精灵，管线只提取 runtime 使用的一张。
 
 原语音 MP4 是音频输入封装，派生 FLAC 体积更大但避免二次有损压缩。原 WAV 留存，伴奏 AAC 256 kbps 是有损副本。哈希、起音裁切与响度见 catalog.json 和 assets/analysis。
 

@@ -5,6 +5,7 @@ import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import * as esbuild from 'esbuild';
 
+const MIME_BY_EXTENSION = { webp: 'image/webp', m4a: 'audio/mp4', flac: 'audio/flac' };
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const catalog = JSON.parse(fs.readFileSync(path.join(root, 'assets/catalog.json'), 'utf8'));
 const records = [], index = {}, byDigest = new Map();
@@ -13,7 +14,8 @@ for (const item of catalog.resources) {
   const sha = crypto.createHash('sha256').update(bytes).digest('hex');
   if (sha !== item.sha256 || bytes.length !== item.bytes) throw Error(`Asset does not match catalog: ${item.file}`);
   if (!byDigest.has(sha)) {
-    const mime = item.file.endsWith('.webp') ? 'image/webp' : 'audio/mp4';
+    const mime = MIME_BY_EXTENSION[item.file.split('.').pop().toLowerCase()];
+    if (!mime) throw Error(`Unknown runtime asset type: ${item.file}`);
     byDigest.set(sha, records.length); records.push({ mime, base64: bytes.toString('base64') });
   }
   index[item.file] = byDigest.get(sha);

@@ -8,6 +8,9 @@
     "description": "ink navy, graphite, steel blue and muted jade, fine rain texture and restrained metallic light; no background bitmap"
   },
   "characters": {
+    "source": "assets/art/hazel-seated-atlas-v1.png",
+    "sourceSha256": "16484c4dff9af3a46004f982c7fc2431b3de943078cf18945ace6faf5d976d6c",
+    "sourceBytes": 2116365,
     "width": 1536,
     "height": 1024,
     "frames": [

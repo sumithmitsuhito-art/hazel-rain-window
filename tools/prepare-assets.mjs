@@ -21,6 +21,9 @@ const voiceSourceDirectory = path.join(root, 'assets/source/voice');
 const selections = fs.readdirSync(voiceSourceDirectory, { withFileTypes: true })
   .filter(entry => entry.isFile() && entry.name.toLowerCase().endsWith('.mp4')).map(entry => entry.name).sort();
 if (!selections.length) throw Error('The selected voice directory contains no MP4 audio files');
+// The atlas still holds eight sprites (two outfits, four states); the current build ships
+// only the uniform idle one, so that frame is named here instead of being derived by row and column.
+const RUNTIME_FRAMES = [{ skin: 'uniform', state: 'idle' }];
 
 function decodeAudio(file) {
   const bytes = execFileSync(ffmpeg, ['-v', 'error', '-i', file, '-f', 'f32le', '-ac', '2', '-ar', '44100', 'pipe:1'], { maxBuffer: 128 * 1024 * 1024, windowsHide: true });
@@ -141,37 +144,38 @@ async function prepareFrames() {
     }
     if (count > 10000) components.push({ label, count, minX, minY, maxX, maxY });
   }
-  if (components.length !== 8) throw new Error(`Expected 8 separate character sprites, found ${components.length}`);
-  components.sort((a, b) => a.minY - b.minY);
-  const rows = [components.slice(0, 4), components.slice(4)];
-  const frames = [];
-  for (let row = 0; row < 1; row++) {
-    rows[row].sort((a, b) => a.minX - b.minX);
-    for (let col = 0; col < 1; col++) {
-      const c = rows[row][col], left = Math.max(0, c.minX - 4), top = Math.max(0, c.minY - 4);
-      const w = Math.min(width, c.maxX + 5) - left, h = Math.min(height, c.maxY + 5) - top;
-      const pixels = Buffer.alloc(w * h * 4);
-      let headMass = 0, headX = 0;
-      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
-        const gx = left + x, gy = top + y, index = gy * width + gx;
-        let belongs = labels[index] === c.label;
-        if (!belongs && data[index * 4 + 3] > 0) {
-          for (let dy = -3; dy <= 3 && !belongs; dy++) for (let dx = -3; dx <= 3 && !belongs; dx++) {
-            const nx = gx + dx, ny = gy + dy;
-            if (nx >= 0 && nx < width && ny >= 0 && ny < height && labels[ny * width + nx] === c.label) belongs = true;
-          }
+  if (components.length < RUNTIME_FRAMES.length) throw new Error(`Atlas holds ${components.length} character sprites, need ${RUNTIME_FRAMES.length}`);
+  components.sort((a, b) => a.minY - b.minY || a.minX - b.minX);
+  const writeSprite = async (c, skin, state) => {
+    const left = Math.max(0, c.minX - 4), top = Math.max(0, c.minY - 4);
+    const w = Math.min(width, c.maxX + 5) - left, h = Math.min(height, c.maxY + 5) - top;
+    const pixels = Buffer.alloc(w * h * 4);
+    let headMass = 0, headX = 0;
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const gx = left + x, gy = top + y, at = gy * width + gx;
+      let belongs = labels[at] === c.label;
+      if (!belongs && data[at * 4 + 3] > 0) {
+        for (let dy = -3; dy <= 3 && !belongs; dy++) for (let dx = -3; dx <= 3 && !belongs; dx++) {
+          const nx = gx + dx, ny = gy + dy;
+          if (nx >= 0 && nx < width && ny >= 0 && ny < height && labels[ny * width + nx] === c.label) belongs = true;
         }
-        if (!belongs) continue;
-        data.copy(pixels, (y * w + x) * 4, index * 4, index * 4 + 4);
-        if (y < h * 0.29) { const a = data[index * 4 + 3]; headMass += a; headX += x * a; }
       }
-      const skin = row ? 'dress' : 'uniform', state = ['idle', 'soft', 'open', 'blink'][col];
-      const file = `hazel-${skin}-${state}.webp`;
-      await sharp(pixels, { raw: { width: w, height: h, channels: 4 } }).webp({ lossless: true, effort: 6 }).toFile(path.join(out, file));
-      frames.push({ skin, state, file, width: w, height: h, pivot: [Number((headX / headMass + w * 0.08).toFixed(2)), Number((h * 0.64).toFixed(2))], sourceRect: [left, top, w, h] });
+      if (!belongs) continue;
+      data.copy(pixels, (y * w + x) * 4, at * 4, at * 4 + 4);
+      if (y < h * 0.29) { const alpha = data[at * 4 + 3]; headMass += alpha; headX += x * alpha; }
     }
-  }
-  return { width, height, frames, derivation: 'connected-component atlas extraction, 3px antialias edge neighborhood, lossless WebP; source PNG kept' };
+    const file = `hazel-${skin}-${state}.webp`;
+    await sharp(pixels, { raw: { width: w, height: h, channels: 4 } }).webp({ lossless: true, effort: 6 }).toFile(path.join(out, file));
+    return { skin, state, file, width: w, height: h, pivot: [Number((headX / headMass + w * 0.08).toFixed(2)), Number((h * 0.64).toFixed(2))], sourceRect: [left, top, w, h] };
+  };
+  const frames = [];
+  for (const [index, { skin, state }] of RUNTIME_FRAMES.entries()) frames.push(await writeSprite(components[index], skin, state));
+  return {
+    source: 'assets/art/hazel-seated-atlas-v1.png',
+    sourceSha256: digest(fs.readFileSync(atlasSource)),
+    sourceBytes: fs.statSync(atlasSource).size,
+    width, height, frames, derivation: 'connected-component atlas extraction, 3px antialias edge neighborhood, lossless WebP; source PNG kept',
+  };
 }
 
 const characters = await prepareFrames();
