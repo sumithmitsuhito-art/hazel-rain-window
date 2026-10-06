@@ -2,11 +2,13 @@
 
 本地音乐点击游戏，当前版本 **0.5.2**。深墨蓝雨雾、居中单张人物、稀疏长光线与点击粒子反馈。动态判定线版本已回退，本次整理不改变玩法。
 
-[打开游戏](dist/game.html) · [开发规则](AGENTS.md) · [设计约定](docs/DESIGN.md) · [素材说明](docs/ASSETS.md) · [验收记录](docs/VALIDATION.md)
+[在线试玩](https://sumithmitsuhito-art.github.io/hazel-rain-window/) · [打开游戏](dist/game.html) · [开发规则](AGENTS.md) · [设计约定](docs/DESIGN.md) · [素材说明](docs/ASSETS.md) · [验收记录](docs/VALIDATION.md)
 
 ## 直接游玩
 
 下载或复制 `dist/game.html`，双击打开，点击进入即可。首次用户手势启动音乐。人物、音乐和语音全部内嵌，游玩无需安装依赖、服务器或联网。
+
+也可以直接在线游玩：<https://sumithmitsuhito-art.github.io/hazel-rain-window/>，由 GitHub Pages 从本仓库 main 分支根目录静态托管（分支部署会连同仓库内全部原件一起公开，见 ASSETS.md 的使用边界说明）。
 
 舞台任意位置点击，随机播放语音，吸附到下一半拍；同一格连续点击保留最后一次声音。点击位置决定视觉反馈位置，不决定音色。面板可调音量、拍点和动效。设置支持 JSON 导入导出；文件入口下的存储持久性由浏览器决定。
 

@@ -15,6 +15,7 @@
 - npm run build：单 HTML 生成成功，7,087,291 字节；gzip 测量 5,085,256 字节，不代表文件本身大小。连续两次构建 SHA-256 一致（0495e3a4…），构建可复现。
 - 27 项内嵌资源哈希与 catalog 一致；25 条语音源文件、音乐源 WAV 与人物源 PNG 的哈希独立核验通过。
 - 自包含检查：无外部 src/href、无 fetch/XHR/WebSocket、无 @import、无 CSS 外链；唯一的 http 串是 favicon 内联 SVG 的命名空间。
+- GitHub Pages 线上部署核验：站点根返回 200（870 字节，含指向 ./dist/game.html 的相对跳转与兜底链接），`dist/game.html` 返回 200、Content-Length 7,087,291，SHA-256 与本地构建完全一致（0495e3a4…）。这只证明线上产物与本地构建字节相同，不替代浏览器试玩。
 
 ## 尚未覆盖
 
